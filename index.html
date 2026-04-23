@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gameprints Lead Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">Gameprints</p>
+        <h1>Lead Finder for college basketball posts on X</h1>
+        <p class="intro">
+          Generate zero-cost search packs, open them directly on X, and keep a local shortlist of
+          promising posts for manual follow-up.
+        </p>
+      </section>
+
+      <section class="panel controls">
+        <div class="section-head">
+          <h2>Search Setup</h2>
+          <button id="resetFilters" class="ghost-button" type="button">Reset</button>
+        </div>
+
+        <div class="control-grid">
+          <label class="field">
+            <span>Search mode</span>
+            <select id="searchMode">
+              <option value="team">Team mentions</option>
+              <option value="rivalry">Rivalry and game moments</option>
+              <option value="tournament">Tournament buzz</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Minimum likes hint</span>
+            <select id="engagementPreset">
+              <option value="">No filter hint</option>
+              <option value="50">50+</option>
+              <option value="100">100+</option>
+              <option value="250">250+</option>
+            </select>
+          </label>
+
+          <label class="field field-wide">
+            <span>Extra keywords</span>
+            <input
+              id="extraKeywords"
+              type="text"
+              placeholder="buzzer beater, overtime, upset"
+              autocomplete="off"
+            />
+          </label>
+        </div>
+
+        <div class="section-head teams-head">
+          <h3>Teams</h3>
+          <div class="team-actions">
+            <button id="selectCore" class="ghost-button" type="button">Core 12</button>
+            <button id="selectAll" class="ghost-button" type="button">All</button>
+            <button id="clearTeams" class="ghost-button" type="button">Clear</button>
+          </div>
+        </div>
+        <div id="teamGrid" class="team-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="panel search-pack">
+        <div class="section-head">
+          <div>
+            <h2>Search Pack</h2>
+            <p class="meta">Direct links to X search. No API, no monthly cost.</p>
+          </div>
+          <button id="openAll" class="primary-button" type="button">Open Visible Searches</button>
+        </div>
+        <div id="queryList" class="query-list"></div>
+      </section>
+
+      <section class="panel shortlist">
+        <div class="section-head">
+          <div>
+            <h2>Shortlist</h2>
+            <p class="meta">Saved locally in this browser via localStorage.</p>
+          </div>
+        </div>
+
+        <form id="shortlistForm" class="shortlist-form">
+          <label class="field">
+            <span>X post URL</span>
+            <input id="postUrl" type="url" placeholder="https://x.com/..." required />
+          </label>
+          <label class="field">
+            <span>Teams / game</span>
+            <input id="postContext" type="text" placeholder="Duke vs UNC" required />
+          </label>
+          <label class="field field-wide">
+            <span>Why this is interesting</span>
+            <input
+              id="postNotes"
+              type="text"
+              placeholder="Great engagement, clear game reference, good for poster"
+            />
+          </label>
+          <button class="primary-button" type="submit">Add to Shortlist</button>
+        </form>
+
+        <div id="shortlistItems" class="shortlist-items"></div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
